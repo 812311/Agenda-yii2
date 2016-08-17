@@ -64,8 +64,10 @@ class GruposController extends Controller
     public function actionCreate()
     {
         $model = new Grupos();
+        
+        $post=Yii::$app->request->post();
 
-        if ($model->load(Yii::$app->request->post()) ) {
+        if ($model->load($post) ) {
             
             $model->fk_grupouser=Yii::$app->user->id;
             if ($model->save()) return $this->redirect(['view', 'id' => $model->id]);
