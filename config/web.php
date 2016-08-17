@@ -54,6 +54,7 @@ $config = [
             'class' => 'yii\web\UrlManager',
             'showScriptName' => false,
             'rules' => [
+                'user-management/auth/login' => 'site/login'
             ],
         ],
         
