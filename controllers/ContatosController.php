@@ -116,16 +116,15 @@ class ContatosController extends Controller
 
         if ($model->load($post)) {
           if($model->save()){
-                foreach($post['Contatos']['fk_grupo'] as $grupo)
+                ManyGrupos::deleteAll(['fk_contato'=>$id]);
+                 foreach($post['Contatos']['fk_grupo'] as $grupo)
                 {
                    $manygrupos=new ManyGrupos();
                    $manygrupos->fk_contato=$model["id"];
-                  // if ($grupo!=($model->)){
-                       $manygrupos->fk_manygrupos=$grupo;
-                   //} 
-                   if($manygrupos->save())
-                        return $this->redirect(['view', 'id' => $model->id]);
+                   $manygrupos->fk_manygrupos=$grupo;
+                   $manygrupos->save();
                 }
+                return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {
             return $this->render('update', [
