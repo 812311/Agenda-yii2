@@ -141,9 +141,8 @@ class ContatosController extends Controller
      */
     public function actionDelete($id)
     {
-        
+        ManyGrupos::deleteAll(['fk_contato'=>$id]);
         $this->findModel($id)->delete();
-
         return $this->redirect(['index']);
     }
 
