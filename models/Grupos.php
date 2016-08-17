@@ -30,10 +30,9 @@ class Grupos extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nome', 'fk_grupouser'], 'required'],
+            [['nome'], 'required'],
             [['fk_grupouser'], 'integer'],
             [['nome'], 'string', 'max' => 255],
-            [['nome'], 'unique'],
            // [['fk_grupouser'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['fk_grupouser' => 'id']],
         ];
     }
