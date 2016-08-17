@@ -120,7 +120,9 @@ class ContatosController extends Controller
                 {
                    $manygrupos=new ManyGrupos();
                    $manygrupos->fk_contato=$model["id"];
-                   $manygrupos->fk_manygrupos=$grupo;
+                  // if ($grupo!=($model->)){
+                       $manygrupos->fk_manygrupos=$grupo;
+                   //} 
                    if($manygrupos->save())
                         return $this->redirect(['view', 'id' => $model->id]);
                 }

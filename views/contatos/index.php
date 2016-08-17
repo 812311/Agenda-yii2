@@ -33,10 +33,16 @@ $this->params['breadcrumbs'][] = $this->title;
             'telefone',
             
             
-            //  [
-            //      'label'=>'Grupos', 
-            //      'value'=>$nomeGrupos
-            //  ],
+              [
+                  'label'=>'Grupos', 
+                  'value'=>function($data){
+                      $nomegrupos=[];
+                        foreach ($data->manyGrupos as $manyG){
+                             $nomegrupos[]=$manyG->fkManygrupos['nome'];       
+                        }
+                        return implode(' | ', $nomegrupos);
+                    }
+              ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
