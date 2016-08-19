@@ -8,6 +8,7 @@ use app\models\GruposSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\models\ManyGrupos;
 
 /**
  * GruposController implements the CRUD actions for Grupos model.
@@ -106,8 +107,12 @@ class GruposController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
-
+        // $contato = new ManyGrupos;
+        // $contato = $contato->find("fk_grupo = :fk_grupo", array(":fk_grupo" => $id));
+        
+        // if(!isset($contato))
+             $this->findModel($id)->delete();
+    
         return $this->redirect(['index']);
     }
 
