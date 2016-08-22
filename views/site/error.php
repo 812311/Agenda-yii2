@@ -11,7 +11,7 @@ $this->title = $name;
 ?>
 <div class="site-error">
 
-    <h1> <?=Html::encode("This group has at least one Contact")?>
+    <h1> <?=Html::encode($name)?>
      </h1>
     
     <div class="alert alert-danger">
