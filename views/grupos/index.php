@@ -27,4 +27,5 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]); 
     ?>
+    <!--<?= Yii::$app->session->getFlash('error'); ?>-->
 </div>
