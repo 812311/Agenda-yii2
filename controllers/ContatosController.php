@@ -37,6 +37,9 @@ class ContatosController extends Controller
      */
     public function actionIndex()
     {
+        if(Yii::$app->user->getIsGuest()){
+            return $this->redirect('/~philipe/YiiBasic/web/user-management/auth/login',302);
+        }
         $searchModel = new ContatosSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         
@@ -53,6 +56,9 @@ class ContatosController extends Controller
      */
     public function actionView($id)
     {
+         if(Yii::$app->user->getIsGuest()){
+            return $this->redirect('/~philipe/YiiBasic/web/user-management/auth/login',302);
+        }
         $model =$this->findModel($id);
         $nomegrupos=[];
         foreach ($model->manyGrupos as $manyG){
@@ -71,6 +77,9 @@ class ContatosController extends Controller
      */
     public function actionCreate()
     {
+         if(Yii::$app->user->getIsGuest()){
+            return $this->redirect('/~philipe/YiiBasic/web/user-management/auth/login',302);
+        }
         
         $model = new Contatos();
             //echo"<pre>";
@@ -109,8 +118,11 @@ class ContatosController extends Controller
      */
     public function actionUpdate($id)
     {
-        $model = $this->findModel($id);
+         if(Yii::$app->user->getIsGuest()){
+            return $this->redirect('/~philipe/YiiBasic/web/user-management/auth/login',302);
+        }
 
+        $model = $this->findModel($id);
         $model->fk_user=Yii::$app->user->id;
         $post=Yii::$app->request->post();
 
@@ -141,6 +153,9 @@ class ContatosController extends Controller
      */
     public function actionDelete($id)
     {
+         if(Yii::$app->user->getIsGuest()){
+            return $this->redirect('/~philipe/YiiBasic/web/user-management/auth/login',302);
+        }
         ManyGrupos::deleteAll(['fk_contato'=>$id]);
         $this->findModel($id)->delete();
         return $this->redirect(['index']);

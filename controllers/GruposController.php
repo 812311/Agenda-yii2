@@ -9,6 +9,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use app\models\ManyGrupos;
+use app\controllers\SiteController;
 
 /**
  * GruposController implements the CRUD actions for Grupos model.
@@ -36,6 +37,11 @@ class GruposController extends Controller
      */
     public function actionIndex()
     {
+        if(Yii::$app->user->getIsGuest()){
+            return $this->redirect('/~philipe/YiiBasic/web/user-management/auth/login',302);
+        }
+        //$sitecontroller= new SiteController();
+        //$sitecontroller->actionLogin();
         $searchModel = new GruposSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -44,6 +50,7 @@ class GruposController extends Controller
             'dataProvider' => $dataProvider,
         ]);
     }
+    
 
     /**
      * Displays a single Grupos model.
@@ -52,6 +59,9 @@ class GruposController extends Controller
      */
     public function actionView($id)
     {
+         if(Yii::$app->user->getIsGuest()){
+            return $this->redirect('/~philipe/YiiBasic/web/user-management/auth/login',302);
+        }
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -64,6 +74,9 @@ class GruposController extends Controller
      */
     public function actionCreate()
     {
+         if(Yii::$app->user->getIsGuest()){
+            return $this->redirect('/~philipe/YiiBasic/web/user-management/auth/login',302);
+        }
         $model = new Grupos();
         
         $post=Yii::$app->request->post();
@@ -88,6 +101,9 @@ class GruposController extends Controller
      */
     public function actionUpdate($id)
     {
+         if(Yii::$app->user->getIsGuest()){
+            return $this->redirect('/~philipe/YiiBasic/web/user-management/auth/login',302);
+        }
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -107,6 +123,9 @@ class GruposController extends Controller
      */
     public function actionDelete($id)
     {
+         if(Yii::$app->user->getIsGuest()){
+            return $this->redirect('/~philipe/YiiBasic/web/user-management/auth/login',302);
+        }
         // $contato = new ManyGrupos;
         // $contato = $contato->find("fk_grupo = :fk_grupo", array(":fk_grupo" => $id));
         

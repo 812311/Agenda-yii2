@@ -29,6 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
     ?>
     
     <?//===================POP UP Warning=========?>
+    
     <?php if(Yii::$app->session->hasFlash('info')): ?>
 
     <script language="javascript">
