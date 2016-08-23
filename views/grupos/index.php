@@ -2,7 +2,6 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-use kartik\widgets\Growl;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\GruposSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -37,5 +36,5 @@ $this->params['breadcrumbs'][] = $this->title;
     </script>
 
     <?php endif; ?>
-    
+
 </div>
