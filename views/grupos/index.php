@@ -28,13 +28,14 @@ $this->params['breadcrumbs'][] = $this->title;
     ]); 
     
     ?>
+    
+    <?//===================POP UP Warning=========?>
     <?php if(Yii::$app->session->hasFlash('info')): ?>
 
-    <div class="success">
-    <?php echo Yii::$app->session->getFlash('info'); ?>
-    </div>
+    <script language="javascript">
+    <?php echo 'alert("'.Yii::$app->session->getFlash('info').'")'; ?>
+    </script>
 
     <?php endif; ?>
-
-    <!--<?= Yii::$app->session->getFlash('info'); ?>-->
+    
 </div>
