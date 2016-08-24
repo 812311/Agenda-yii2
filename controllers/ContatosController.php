@@ -30,21 +30,16 @@ class ContatosController extends Controller
             ],
         ];
     }
-    public function islogged(){
-        if(Yii::$app->user->getIsGuest()){
-            return $this->redirect('/~philipe/YiiBasic/web/user-management/auth/login',302);
-        }
-    }
+   
     /**
      * Lists all Contatos models.
      * @return mixed
      */
     public function actionIndex()
     {
-        // if(Yii::$app->user->getIsGuest()){
-        //     return $this->redirect('/~philipe/YiiBasic/web/user-management/auth/login',302);
-        // }
-        islogged();
+         if(Yii::$app->user->getIsGuest()){
+             return $this->redirect('/~philipe/YiiBasic/web/user-management/auth/login',302);
+         }
         $searchModel = new ContatosSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         
@@ -61,10 +56,9 @@ class ContatosController extends Controller
      */
     public function actionView($id)
     {
-        // if(Yii::$app->user->getIsGuest()){
-        //     return $this->redirect('/~philipe/YiiBasic/web/user-management/auth/login',302);
-        // }
-        islogged();
+        if(Yii::$app->user->getIsGuest()){
+             return $this->redirect('/~philipe/YiiBasic/web/user-management/auth/login',302);
+         }
         $model =$this->findModel($id);
         $nomegrupos=[];
         foreach ($model->manyGrupos as $manyG){
@@ -83,10 +77,10 @@ class ContatosController extends Controller
      */
     public function actionCreate()
     {
-        //  if(Yii::$app->user->getIsGuest()){
-        //     return $this->redirect('/~philipe/YiiBasic/web/user-management/auth/login',302);
-        // }
-        islogged();
+         if(Yii::$app->user->getIsGuest()){
+             return $this->redirect('/~philipe/YiiBasic/web/user-management/auth/login',302);
+         }
+     
         
         $model = new Contatos();
             //echo"<pre>";
