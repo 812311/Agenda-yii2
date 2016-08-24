@@ -92,12 +92,14 @@ class ContatosController extends Controller
 
         if ($model->load($post)) {
             if($model->save()){
-                foreach($post['Contatos']['fk_grupo'] as $grupo)
-                {
-                   $manygrupos=new ManyGrupos();
-                   $manygrupos->fk_contato=$model["id"];
-                   $manygrupos->fk_manygrupos=$grupo;
-                   $manygrupos->save();
+                if (!empty($post['Contatos']['fk_grupo'])){
+                    foreach($post['Contatos']['fk_grupo'] as $grupo)
+                    {
+                        $manygrupos=new ManyGrupos();
+                        $manygrupos->fk_contato=$model["id"];
+                        $manygrupos->fk_manygrupos=$grupo;
+                        $manygrupos->save();
+                    }
                 }
                 return $this->redirect(['view', 'id' => $model->id]);
             } 
@@ -128,13 +130,15 @@ class ContatosController extends Controller
 
         if ($model->load($post)) {
           if($model->save()){
-                ManyGrupos::deleteAll(['fk_contato'=>$id]);
-                 foreach($post['Contatos']['fk_grupo'] as $grupo)
-                {
-                   $manygrupos=new ManyGrupos();
-                   $manygrupos->fk_contato=$model["id"];
-                   $manygrupos->fk_manygrupos=$grupo;
-                   $manygrupos->save();
+              ManyGrupos::deleteAll(['fk_contato'=>$id]);
+                if (!empty($post['Contatos']['fk_grupo'])){
+                    foreach($post['Contatos']['fk_grupo'] as $grupo)
+                    {
+                        $manygrupos=new ManyGrupos();
+                        $manygrupos->fk_contato=$model["id"];
+                        $manygrupos->fk_manygrupos=$grupo;
+                        $manygrupos->save();
+                    }
                 }
                 return $this->redirect(['view', 'id' => $model->id]);
             }

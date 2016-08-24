@@ -18,8 +18,8 @@ class ContatosSearch extends Contatos
     public function rules()
     {
         return [
-            [['id', 'telefone', 'fk_user'], 'integer'],
-            [['nome'], 'safe'],
+            [['id', 'fk_user'], 'integer'],
+            [['nome', 'telefone'], 'safe'],
         ];
     }
 

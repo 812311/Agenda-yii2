@@ -9,7 +9,7 @@ use webvimark\modules\UserManagement\models;
  *
  * @property integer $id
  * @property string $nome
- * @property integer $telefone
+ * @property string $telefone
  * @property integer $fk_user
  *
  * @property User $fkUser
@@ -32,8 +32,8 @@ class Contatos extends \yii\db\ActiveRecord
     {
         return [
             [['telefone', 'fk_user'], 'required'],
-            [['telefone', 'fk_user'], 'integer'],
-            [['nome'], 'string', 'max' => 255],
+            [['fk_user'], 'integer'],
+            [['nome', 'telefone'], 'string', 'max' => 255],
             //[['fk_user'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['fk_user' => 'id']],
         ];
     }

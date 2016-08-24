@@ -16,13 +16,13 @@ use app\models\Grupos;
 
     <?= $form->field($model, 'nome')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'telefone')->textInput() ?>
+    <?= $form->field($model, 'telefone')->textInput(['maxlength' => true]) ?>
 
    <!-- <?= $form->field($model, 'fk_user')->textInput() ?> -->
 
     <?= Html::dropDownList('Contatos[fk_grupo]','',
         ArrayHelper::map( Grupos::findAll(['fk_grupouser'=>Yii::$app->user->id]),'id','nome'), 
-        ['prompt'=>Yii::t('app','Selecionar grupo'), 'multiple' => 'multiple']) ?> 
+        ['multiple' => 'multiple']) ?> 
     <br>
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
